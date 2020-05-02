@@ -1,0 +1,29 @@
+<form>
+    <label class="url-input-label" for="geturl">Enter the Url to extract Images</label>
+    <input type="text" id="geturl" required #getImageUrl = 'ngModel' placeholder="Enter Website Url" class="url-input-form-control" name="image-extract"
+        [(ngModel)]="userInputData">
+</form>
+<div class="alertMessage" *ngIf='getImageUrl.touched && !getImageUrl.valid !! showalertMessage'>*Please Enter Url</div>
+<button class="submit-url-button" (click)='getImageComp()'>
+    <mat-progress-spinner mode="indeterminate" diameter="20" *ngIf="spinControl"></mat-progress-spinner>
+    <span *ngIf="!spinControl">Submit</span>
+</button>
+<div class="table-container" *ngIf="imageData">
+    <div class="t-head">
+        <div class="t-row">
+            <div class="t-column column-id">S.No</div>
+            <div class="t-column">Website Url</div>
+        </div>
+    </div>
+    <div class="t-body" *ngFor="let item of imageData">
+        <div class="t-row">
+            <div class="t-column column-id">{{item.id}}</div>
+            <div class="t-column">
+                <div>{{item.title ? item.title : item.url}}</div>
+                <div><img [src]="item.url" /></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3>{{errorData}}</h3>
