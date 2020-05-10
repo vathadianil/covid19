@@ -44,12 +44,18 @@
   background-color: #fdf5ec;
 }
 
+
+
 @media only screen 
   and (min-device-width: 768px) 
   and (max-device-width: 1024px) 
   and (-webkit-min-device-pixel-ratio: 1) {
     .covid-card {
       width: 50%;
+    }
+    .covid19-countryData,
+    .covid19-stateData {
+      padding: 1.5em;
     }
 }
 
@@ -59,5 +65,9 @@
   and (-webkit-min-device-pixel-ratio: 2) { 
     .covid-card {
       width: 100%;
+    }
+    .covid19-countryData,
+    .covid19-stateData {
+      padding: 1.5em;
     }
 }

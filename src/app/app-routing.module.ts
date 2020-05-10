@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './home/home.component';
-import {EmployeeGetdataComponent} from './employee-getdata/employee-getdata.component';
-import {ImageComponentComponent} from './image-component/image-component.component'
+import {CovidLogDataComponent} from './covid-log-data/covid-log-data.component';
+import {DoughnutComponent} from  './doughnut/doughnut.component';
 
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
   {path:'home',component: HomeComponent},
-  {path:'employeegetdata', component:EmployeeGetdataComponent},
-  {path:'imagedata', component:ImageComponentComponent}
+  {path:'charts', component:DoughnutComponent},
+  {path: 'updates', component:CovidLogDataComponent}
 ];
 
 @NgModule({

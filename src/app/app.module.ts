@@ -7,23 +7,28 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { ChartsModule } from 'ng2-charts';
+import {MatSliderModule} from '@angular/material/slider';
+import {StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EmployeeCountComponent } from './employee-count/employee-count.component';
 import { HomeComponent } from './home/home.component';
-import { EmployeeGetdataComponent } from './employee-getdata/employee-getdata.component';
-import { ImageComponentComponent } from './image-component/image-component.component';
 import { AgmCoreModule } from '@agm/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DoughnutComponent } from './doughnut/doughnut.component';
+import { CovidLogDataComponent } from './covid-log-data/covid-log-data.component';
+import { logDataReducer } from './store/reducers/reducers';
+import { CovidLogDataEffects } from './store/effect/effects';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeCountComponent,
     HomeComponent,
-    EmployeeGetdataComponent,
-    ImageComponentComponent
+    DoughnutComponent,
+    CovidLogDataComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +43,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatButtonModule,
     MatCardModule,
     MatListModule,
-    MatGridListModule
+    MatGridListModule,
+    MatExpansionModule,
+    ChartsModule,
+    MatSliderModule,
+    EffectsModule.forRoot([CovidLogDataEffects]),
+    StoreModule.forRoot({
+      loadLogData:logDataReducer
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

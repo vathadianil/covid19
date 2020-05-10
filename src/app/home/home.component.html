@@ -1,5 +1,8 @@
+<div class="spinner">
+  <mat-progress-spinner mode="indeterminate" style="margin:0 auto; margin-top: 20%" *ngIf="!covid19Data">
+  </mat-progress-spinner>
+</div>
 
- <mat-progress-spinner mode="indeterminate" style="margin:0 auto; margin-top: 20%"  *ngIf="!covid19Data"></mat-progress-spinner>
 <div class="covid-cotainer">
   <div class="covid-card" *ngIf="covid19Data">
     <mat-card class="country-card">

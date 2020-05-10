@@ -2,7 +2,9 @@ const express = require("express");
 var request = require('request');
 var cheerio = require('cheerio');
 const extractDomain = require('extract-domain');
+var cors = require('cors');
 var app = express();
+app.use(cors());
 var bodyParser = require('body-parser')
 
 // parse application/x-www-form-urlencoded
@@ -108,6 +110,40 @@ app.get("/getImages", (req, res) => {
 app.get("/getCovidData", (req, res) => {
     request({ 
         url: "https://api.covid19india.org/state_district_wise.json",
+        headers: {'content-type' : 'application/json'},
+        json: true
+    }, function (err, resp, body) {
+        if (body) {
+            res.json(body);
+        } else {
+            res.json({
+                status: 200,
+                error: "Request Failed"
+            });
+        }
+    });
+});
+
+app.get("/getCovidFullData", (req, res) => {
+    request({ 
+        url: "https://api.covid19india.org/data.json",
+        headers: {'content-type' : 'application/json'},
+        json: true
+    }, function (err, resp, body) {
+        if (body) {
+            res.json(body);
+        } else {
+            res.json({
+                status: 200,
+                error: "Request Failed"
+            });
+        }
+    });
+});
+
+app.get("/getCovidLogs", (req, res) => {
+    request({ 
+        url: "https://api.covid19india.org/updatelog/log.json",
         headers: {'content-type' : 'application/json'},
         json: true
     }, function (err, resp, body) {

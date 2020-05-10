@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EmpoloyeeServiceService } from '../empoloyee-service.service'
+import { EmpoloyeeServiceService } from '../empoloyee-service.service';
 
 @Component({
   selector: 'app-home',
@@ -7,23 +7,21 @@ import { EmpoloyeeServiceService } from '../empoloyee-service.service'
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  // text : string = 'Welcome';
-  // lat: number = 17.3850;
-  // lng: number = 78.4867;
-  // zoom: number = 15;
   covid19Data: any;
   errorMessage: any;
+  chartdata: number[] = [];
   constructor(private _covid19DataGetUrl: EmpoloyeeServiceService) { }
+  
 
   processData(data: any) {
-    let country:any = {};
+    let country: any = {};
     country.states = [];
     country.countryActive = 0;
     country.countryCofirmed = 0;
     country.counntryDeceased = 0;
     country.countryRecovered = 0;
-  
-    for(let state in data) {
+
+    for (let state in data) {
       let temp: any = {};
       temp.state = state;
       temp.data = [];
@@ -32,7 +30,7 @@ export class HomeComponent implements OnInit {
       temp.deceased = 0;
       temp.recovered = 0;
 
-      for(let disctrict in data[state].districtData) {
+      for (let disctrict in data[state].districtData) {
         let tempDis: any = {};
         tempDis.disctrict = disctrict;
         tempDis.data = data[state].districtData[disctrict];
@@ -53,10 +51,14 @@ export class HomeComponent implements OnInit {
 
   getcovid19Data() {
     this._covid19DataGetUrl.getcovid19Data().subscribe((data) => {
-      this.covid19Data = this.processData(data);
+      this.covid19Data =this.processData(data);
     },
       (error) => { this.errorMessage = error });
   }
+
+  
+  
+
   ngOnInit(): void {
     this.getcovid19Data();
   }
