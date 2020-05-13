@@ -10,8 +10,8 @@ export interface LogDataLoadingState {
 
 const initialState: LogDataLoadingState = {
     list: [{
-        update: "1 new case in Himachal Pradesh\n",
-        timestamp: 1588864344
+        update: "",
+        timestamp: 0
     }],
     loading: false,
     error: undefined,

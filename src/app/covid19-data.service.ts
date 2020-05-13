@@ -10,11 +10,6 @@ export class Covid19LogDataService {
 
   constructor(private _url:HttpClient) { }
   getcovid19LogData(): Observable<any> {
-    return this._url.get<LogData[]>("https://api.covid19india.org/updatelog/log.json");
-  
-      // .pipe(catchError(this.errorHandlerCovid19Data));
+    return this._url.get<LogData[]>("/getCovidLogs");
   }
-  // errorHandlerCovid19Data(error: HttpErrorResponse) {
-  //   return throwError(error.message || "Server Not Found")
-  // }
 }

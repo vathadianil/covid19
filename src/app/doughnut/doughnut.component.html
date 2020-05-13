@@ -1,21 +1,6 @@
 <div class="spinner">
-  <mat-progress-spinner mode="indeterminate" style="margin:0 auto; margin-top: 20%" *ngIf="!covid19ChartData">
+  <mat-progress-spinner diameter="40" mode="indeterminate" style="margin:0 auto; margin-top: 20%" *ngIf="!covid19ChartData && !barChartData.length">
   </mat-progress-spinner>
-</div>
-<div class="covid19-Chart" *ngIf="covid19ChartData">
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>Total Cases in India</mat-card-title>
-    </mat-card-header>
-    <mat-card-content class="covid19-chartContainer">
-      <div class="covid19-countryData doughnut-chart">
-        <div style="display: block; ">
-          <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [legend]="legend"
-            [colors]="chartColors" [chartType]="doughnutChartType"></canvas>
-        </div>
-      </div>
-    </mat-card-content>
-  </mat-card>
 </div>
 
 <div class="covid19-lineChart" *ngIf="barChartData.length">
@@ -35,3 +20,20 @@
     </mat-card-content>
   </mat-card>
 </div>
+
+<div class="covid19-Chart" *ngIf="covid19ChartData">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Total Cases in India</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="covid19-chartContainer">
+      <div class="covid19-countryData doughnut-chart">
+        <div style="display: block; ">
+          <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [legend]="legend"
+            [colors]="chartColors" [chartType]="doughnutChartType"></canvas>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+

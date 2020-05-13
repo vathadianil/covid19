@@ -12,7 +12,7 @@ export class EmpoloyeeServiceService {
   constructor(private _http: HttpClient, private _url: HttpClient) { }
 
   getcovid19Data(): Observable<any> {
-    return this._url.get<any>("http://localhost:3000/getCovidData")
+    return this._url.get<any>("/getCovidData")
   
       .pipe(catchError(this.errorHandlerCovid19Data));
   }
@@ -21,11 +21,12 @@ export class EmpoloyeeServiceService {
   }
 
   getCovidFullData(): Observable<any> {
-    return this._url.get<any>("http://localhost:3000/getCovidFullData", {
+    return this._url.get<any>("/getCovidFullData", {
     })
       .pipe(catchError(this.errorHandlerCovidFullData));
   }
   errorHandlerCovidFullData(error: HttpErrorResponse) {
     return throwError(error.message || "Server Not Found")
   }
+
 }

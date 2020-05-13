@@ -25,11 +25,11 @@ app.get('/home', function(req, res){
 	res.redirect('/');
 });
 
-app.get('/imagedata', function(req, res){
+app.get('/charts', function(req, res){
 	res.redirect('/');
 });
 
-app.get('/employeegetdata', function(req, res){
+app.get('/updates', function(req, res){
 	res.redirect('/');
 });
 
