@@ -9,10 +9,7 @@ export interface LogDataLoadingState {
 };
 
 const initialState: LogDataLoadingState = {
-    list: [{
-        update: "",
-        timestamp: 0
-    }],
+    list: [],
     loading: false,
     error: undefined,
 };
@@ -21,7 +18,7 @@ export function logDataReducer(state: LogDataLoadingState = initialState, action
         case actions.CovidLogDataActionType.LOAD_LOG_DATA:
             return { ...state, loading: true }
         case actions.CovidLogDataActionType.LOAD_LOG_DATA_SUCCESS:
-            return { ...state, list: action.payload, loading: false }
+            return { ...state, list: action.payload.reverse(), loading: false }
         case actions.CovidLogDataActionType.LOAD_LOG_DATA_FAILURE:
             return { ...state, error: action.payload, loading: false, }
         default:

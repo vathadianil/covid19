@@ -1,11 +1,12 @@
 .covi19LogDataContainer{
     display: flex;
-    flex-direction: column-reverse;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: baseline;
+    width:100%;
+    margin: 0 auto;
 }
-.covidLogCard{
-    margin: 1em;
+.covidLogCard {
+    padding: 1em;
     width: 50%;
 }
 
@@ -21,7 +22,7 @@
 
 @media only screen 
   and (min-device-width: 375px) 
-  and (max-device-width: 667px) 
+  and (max-device-width: 767px) 
   and (-webkit-min-device-pixel-ratio: 2) { 
     .covidLogCard{
         width: 100%;
